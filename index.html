@@ -1,0 +1,62 @@
+<!--MONTANDO UMA CARTEIRA DE ESTUDANTE Q COLOCA OS DADOS SIMULTANEAMENTE ENQUANTO O USUÁRIO DIGITA OS VALORES-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XPTO - CARTEIRA DE ESTUDANTE</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <!--<div id="app">-->
+    <div id="wrapper">
+            <h1>XPTO - CARTEIRA DE ESTUDANTE</h1>
+    
+    <div id="central">
+        <div id="formulario">
+            <!--Usuário irá digitar o nome que irá aparecer na carteira-->
+            <label for="nome">Nome: </label>
+            <input v-model="nome" type="text" id="nome" placeholder="Digite seu nome completo" />
+            
+            <!--Usuário irá digitar a matrícula que irá aparecer na carteira-->
+            <label for="matricula">Matrícula: </label>
+            <input v-model="matricula" type="text" id="matricula" placeholder="Digite sua matrícula" />
+        </div>
+        <div id="previa">
+            <div id="cartao">
+                <div id="dados-cartao">
+                    <!--Utilizando {{ TEMPLATE STRING }}
+                    na Refatoração do cód, optar por 'v-text' ao invés de bigodes-->
+                    <span class="label-cartao">Nome: </span>
+                    <span class="dado-cartao">{{ nome }}</span><!--Nome será refletido aq-->
+                    <!--<span class="dado-cartao" v-test="nome"></span>-->
+                    
+                    <span class="label-cartao">Matrícula: </span>
+                    <span class="dado-cartao">{{ matricula }}</span> <!--Matrícula será refletida aq-->
+                    <!--<span class="dado-cartao" v-test="matricula"></span>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <script src="https://unpkg.com/vue@3.0.0-rc.5/dist/vue.global.js"></script>
+    <!--abertura aba <script> local pra trabalhar com o Vue.js-->
+    <script>
+        //criando instância do Vue
+        Vue.createApp({
+            //dentro das chaves (Objeto JSON) do Método .createApp, vamos inserir os dados (DATA)
+            data(){
+                return{
+                    //inicialmente 'nome' e 'matricula' são textos (String) em branco que são preenchidas pelo usuário
+                    nome: "",
+                    matricula: "",
+                }
+            },
+    
+        }).mount('#central') //o Vue será montado com base na 'div central', pois ela engloba os elementos FILHOS (formulario e previa)
+    </script>
+</body>
+</html>
